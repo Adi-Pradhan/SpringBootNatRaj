@@ -1,0 +1,30 @@
+package com.nt.bean;
+
+import java.time.LocalDateTime;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component("wmg")
+public class WishMessageGen {
+    @Autowired
+	private LocalDateTime ldt;
+    public  WishMessageGen() {
+    	System.out.println("stereotype bean constructor executed");
+    }
+    
+    public String generateWishMessage(String user ) {
+    	int hour=ldt.getHour();
+    	if(hour<12) {
+    		return "Good Morning "+user;
+    		
+    	}
+    	else if(hour<16)
+    	return "Good Afternoon "+user;
+    	else if (hour<20)
+    		return "Good Evening"+user;
+    	else 
+    		return "good night"+user;
+    				
+    }
+}
